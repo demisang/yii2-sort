@@ -19,8 +19,7 @@
     },
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": "*",
-        "yurkinx/yii2-image": "dev-master"
+        "yiisoft/yii2": "*"
     },
     "autoload": {
         "psr-4": {
