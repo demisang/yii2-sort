@@ -1,0 +1,30 @@
+{
+    "name": "demi/sort",
+    "description": "Yii2 behavior for sorting models",
+    "keywords": ["yii2", "sorting", "sort", "behavior"],
+    "homepage": "https://github.com/demisang/yii2-sort#readme",
+    "type": "yii2-extension",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Ivan Orlov",
+            "email": "orlov_mail@mail.ru",
+            "homepage": "http://ivan-orlov.com/",
+            "role": "Creator"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/demisang/yii2-sort/issues",
+        "source": "https://github.com/demisang/yii2-sort"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*",
+        "yurkinx/yii2-image": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "demi\\sort\\": ""
+        }
+    }
+}
