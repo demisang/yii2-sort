@@ -72,9 +72,9 @@ class SortBehavior extends Behavior
         // Current sort value
         $current_sort = $owner->getAttribute($s_attr);
         // Find adjacent model, which is necessary to exchange sorting
-        $query = $owner->find()->select(array_merge($owner->getTableSchema()->primaryKey, [$s_attr]));
+        $query = $owner->find();
         // Add custom conditions
-        //$this->_applyCustomCondition($query);
+        $this->_applyCustomCondition($query);
 
         if ($direction == static::DIR_UP) {
             $query->orderBy = [$s_attr => SORT_DESC];
