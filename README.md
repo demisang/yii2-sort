@@ -67,7 +67,7 @@ Add this code to you controller:
 public function actions()
 {
     return [
-        'change-image-sort' => [
+        'change-sort' => [
             'class' => SortAction::className(),
             'modelClass' => RealtyImage::className(),
 
@@ -83,13 +83,13 @@ public function actions()
             // or
             'redirectUrl' => function ($model) {
                     return Yii::$app->response->redirect(Url::to(['update', 'id' => $model->category_id]));
-                }
+                },
 
             'canSort' => Yii::app()->user->can('admin'),
             // or
             'canSort' => function ($model) {
-                return Yii::app()->user->id == $model->user_id;
-            },
+                    return Yii::app()->user->id == $model->user_id;
+                },
         ]
     ];
 }
