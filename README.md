@@ -49,9 +49,17 @@ In view file:
 ```php
 $canSortDown = $model->canSort(SORT_DESC);
 $canSortUp = $model->canSort(SORT_ASC);
+
+if ($canSortDown) {
+    echo Html::a('Down', ['change-sort', 'id' => $model->id, 'direction' => SORT_DESC]);
+}
+
+if ($canSortUp) {
+    echo Html::a('Up', ['change-sort', 'id' => $model->id, 'direction' => SORT_ASC]);
+}
 ```
 
-In any file:
+In conrtoller/model file:
 ```php
 // sort model down
 $model->changeSorting(SORT_DESC);
