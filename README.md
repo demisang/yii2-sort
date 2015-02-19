@@ -79,7 +79,7 @@ public function actions()
                     }
                 },
             // or
-            'redirectUrl' => Url::to('index'),
+            'redirectUrl' => Url::to(['index']),
             // or
             'redirectUrl' => function ($model) {
                     return Yii::$app->response->redirect(Url::to(['update', 'id' => $model->category_id]));
