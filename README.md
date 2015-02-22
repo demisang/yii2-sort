@@ -33,6 +33,7 @@ public function behaviors()
                 'sortAttribute' => 'sort',
                 'condition' => function ($query, $model) {
                         /* @var $query \yii\db\Query */
+                        /* @var $model self */
                         $query->andWhere(['category_id' => $model->category_id]);
                     },
             ],
@@ -99,6 +100,7 @@ public function actions()
             'class' => 'demi\sort\SortAction',
             'modelClass' => \common\models\Category::className(),
 
+            // optionaly
             'afterChange' => function ($model) {
                     if (!Yii::$app->request->isAjax) {
                         return Yii::$app->response->redirect(Url::to(['update', 'id' => $model->category_id]));
@@ -107,10 +109,10 @@ public function actions()
                     }
                 },
             // or
-            'redirectUrl' => Url::to(['index']),
+            'redirectUrl' => ['index'],
             // or
             'redirectUrl' => function ($model) {
-                    return Yii::$app->response->redirect(Url::to(['update', 'id' => $model->category_id]));
+                    return ['update', 'id' => $model->id];
                 },
 
             'canSort' => Yii::$app->user->can('admin'),
