@@ -203,7 +203,7 @@ class SortBehavior extends Behavior
     private function _applyCustomCondition(Query $query)
     {
         if ($this->_condition instanceof Closure) {
-            call_user_func($this->_condition, $query);
+            call_user_func($this->_condition, $query, $this->owner);
         } elseif ($this->_condition !== null) {
             $query->andWhere($this->_condition);
         }

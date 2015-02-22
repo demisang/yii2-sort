@@ -25,17 +25,15 @@ In model file add sort behavior:
 ```php
 public function behaviors()
 {
-    $it = $this;
-
     return [
         // ...
         'sortBehavior' => [
             'class' => 'demi\sort\SortBehavior',
             'sortConfig' => [
                 'sortAttribute' => 'sort',
-                'condition' => function ($query) use ($it) {
+                'condition' => function ($query, $model) {
                         /* @var $query \yii\db\Query */
-                        $query->andWhere(['category_id' => $it->category_id]);
+                        $query->andWhere(['category_id' => $model->category_id]);
                     },
             ],
         ],
