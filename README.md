@@ -1,4 +1,4 @@
-yii2-image-uploader
+yii2-sort
 ===================
 
 Yii2 behavior to sort models
@@ -45,6 +45,28 @@ public function behaviors()
 
 Usage
 -----
+In GridView:
+```php
+<?= GridView::widget([
+    // ...
+    'columns' => [
+        // ...
+        [
+            'class' => 'demi\sort\SortColumn',
+            'action' => 'change-sort', // optional
+        ],
+    ],
+]); ?>
+```
+Don't forget set default order!
+usually CategorySearch::search()
+```php
+$dataProvider = new ActiveDataProvider([
+    'query' => $query,
+    'sort' => ['defaultOrder' => ['sort' => SORT_ASC]],
+]);
+```
+
 In view file:
 ```php
 $canSortDown = $model->canSort(SORT_DESC);
@@ -76,8 +98,8 @@ public function actions()
 {
     return [
         'change-sort' => [
-            'class' => SortAction::className(),
-            'modelClass' => RealtyImage::className(),
+            'class' => 'demi\sort\SortAction',
+            'modelClass' => \common\models\Category::className(),
 
             'afterChange' => function ($model) {
                     if (!Yii::$app->request->isAjax) {
@@ -98,7 +120,7 @@ public function actions()
             'canSort' => function ($model) {
                     return Yii::$app->user->id == $model->user_id;
                 },
-        ]
+        ],
     ];
 }
 ```

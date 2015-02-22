@@ -7,6 +7,7 @@ use Yii;
 use yii\base\Action;
 use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -23,8 +24,8 @@ class SortAction extends Action
     /** @var Closure|bool Closure function to check user access to delete model image */
     public $canSort = true;
     /** @var Closure|array|string Closure function to get redirect url on after delete image */
-    public $redirectUrl;
-    /** @var Closure|null Closure function to get custom response on after delete image */
+    public $redirectUrl = ['index'];
+    /** @var Closure|null Closure function to get custom response on after changing sort */
     public $afterChange;
 
     public function run()
@@ -67,6 +68,7 @@ class SortAction extends Action
         }
 
         $response = Yii::$app->response;
+
         // if is AJAX request
         if ($request->isAjax) {
             $response->getHeaders()->set('Vary', 'Accept');
@@ -75,11 +77,10 @@ class SortAction extends Action
             return ['status' => 'success'];
         }
 
-        $url = $this->redirectUrl instanceof Closure ? call_user_func($this->redirectUrl, $model) : $this->redirectUrl;
-
-        // Generate default url
-        if (empty($url)) {
-            $url = array_merge(['view'], $attributes);
+        if ($this->redirectUrl instanceof Closure) {
+            $url = call_user_func($this->redirectUrl, $model);
+        } else {
+            $url = Url::to($this->redirectUrl);
         }
 
         return $response->redirect($url);
