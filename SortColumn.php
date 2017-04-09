@@ -23,6 +23,14 @@ class SortColumn extends ActionColumn
     /** @var string Name of action for handle sort changing */
     public $action = 'change-sort';
 
+    public function init()
+    {
+        parent::init();
+
+        $this->headerOptions['style'] = 'min-width: 105px;' . (isset($this->headerOptions['style']) ? ' ' . $this->headerOptions['style'] : '');
+        $this->contentOptions['style'] = 'text-align: center;' . (isset($this->contentOptions['style']) ? ' ' . $this->contentOptions['style'] : '');
+    }
+
     /**
      * @inheritdoc
      */
