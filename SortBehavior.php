@@ -1,9 +1,14 @@
 <?php
+/**
+ * @copyright Copyright (c) 2018 Ivan Orlov
+ * @license   https://github.com/demisang/yii2-sort/blob/master/LICENSE
+ * @link      https://github.com/demisang/yii2-sort#readme
+ * @author    Ivan Orlov <gnasimed@gmail.com>
+ */
 
 namespace demi\sort;
 
 use Closure;
-use Yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\db\Query;
@@ -146,7 +151,8 @@ class SortBehavior extends Behavior
     private static function _checkSortDirection($direction)
     {
         if ($direction != static::DIR_UP && $direction != static::DIR_DOWN) {
-            throw new ServerErrorHttpException('You must set $direction as "' . static::DIR_UP . '" or "' . static::DIR_DOWN . '"!', 500);
+            throw new ServerErrorHttpException('You must set $direction as "' . static::DIR_UP . '" or "' . static::DIR_DOWN . '"!',
+                500);
         }
     }
 

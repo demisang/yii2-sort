@@ -1,4 +1,10 @@
 <?php
+/**
+ * @copyright Copyright (c) 2018 Ivan Orlov
+ * @license   https://github.com/demisang/yii2-sort/blob/master/LICENSE
+ * @link      https://github.com/demisang/yii2-sort#readme
+ * @author    Ivan Orlov <gnasimed@gmail.com>
+ */
 
 namespace demi\sort;
 
@@ -110,4 +116,4 @@ class SortAction extends Action
 
         return $value;
     }
-} 
+}

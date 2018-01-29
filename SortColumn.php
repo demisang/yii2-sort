@@ -1,9 +1,14 @@
 <?php
+/**
+ * @copyright Copyright (c) 2018 Ivan Orlov
+ * @license   https://github.com/demisang/yii2-sort/blob/master/LICENSE
+ * @link      https://github.com/demisang/yii2-sort#readme
+ * @author    Ivan Orlov <gnasimed@gmail.com>
+ */
 
 namespace demi\sort;
 
 use Closure;
-use Yii;
 use yii\db\ActiveRecord;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;

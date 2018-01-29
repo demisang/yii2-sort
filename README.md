@@ -5,18 +5,9 @@ Yii2 behavior to sort models
 
 Installation
 ------------
-Add to composer.json in your project
-```json
-{
-	"require":
-	{
-  		"demi/sort": "dev-master"
-	}
-}
-```
-then run command
+Run
 ```code
-php composer.phar update
+composer require "demi/sort" "~1.0"
 ```
 
 Configuration
